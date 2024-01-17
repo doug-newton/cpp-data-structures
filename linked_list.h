@@ -6,6 +6,9 @@ class LinkedList {
 public:
 
 	LinkedList();
+	~LinkedList();
+
+	void clear();
 
 	Node<T>* head();
 	Node<T>* tail();
@@ -22,6 +25,22 @@ template <typename T>
 LinkedList<T>::LinkedList() :
 	m_head(nullptr),
 	m_tail(nullptr) { }
+
+template <typename T>
+LinkedList<T>::~LinkedList() {
+	this->clear();
+}
+
+template <typename T>
+void LinkedList<T>::clear() {
+	Node<T>* node = this->m_head;
+
+	while (node != nullptr) {
+		Node<T>* temp = node->next();
+		delete node;
+		node = temp;
+	}
+}
 
 template <typename T>
 Node<T>* LinkedList<T>::head() {
