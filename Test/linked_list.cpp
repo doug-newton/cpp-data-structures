@@ -203,3 +203,12 @@ TEST(LinkedList, Remove_Last) {
 	EXPECT_EQ(list.count(), 2);
 	EXPECT_EQ(list.tail()->getValue(), 23);
 }
+
+TEST(LinkedList, Iterator_Begin) {
+	LinkedList<int> list;
+	list.append(12);
+
+	LinkedList<int>::iterator it = list.begin();
+
+	EXPECT_EQ((*it)->getValue(), 12);
+}

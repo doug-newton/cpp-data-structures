@@ -5,6 +5,19 @@ class LinkedList {
 
 public:
 
+	class iterator {
+
+	public:
+
+		iterator(Node<T>* node);
+		Node<T>* operator*();
+
+	private:
+
+		Node<T>* m_node;
+
+	};
+
 	LinkedList();
 	~LinkedList();
 
@@ -23,11 +36,22 @@ public:
 
 	void remove(const T& value);
 
+	iterator begin();
+
 private:
 
 	Node<T>* m_head;
 	Node<T>* m_tail;
 };
+
+template <typename T>
+LinkedList<T>::iterator::iterator(Node<T>* node) :
+	m_node(node) { }
+
+template <typename T>
+Node<T>* LinkedList<T>::iterator::operator*() {
+	return this->m_node;
+}
 
 template <typename T>
 LinkedList<T>::LinkedList() :
@@ -161,4 +185,9 @@ void LinkedList<T>::remove(const T& value) {
 	}
 
 	delete node;
+}
+
+template <typename T>
+typename LinkedList<T>::iterator LinkedList<T>::begin() {
+	return LinkedList<T>::iterator(this->m_head);
 }
