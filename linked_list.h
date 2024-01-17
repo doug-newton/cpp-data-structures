@@ -13,6 +13,7 @@ public:
 		Node<T>* operator*();
 		void operator++();
 		bool operator==(const iterator& other);
+		bool operator!=(const iterator& other);
 
 	private:
 
@@ -39,6 +40,7 @@ public:
 	void remove(const T& value);
 
 	iterator begin();
+	iterator end();
 
 private:
 
@@ -67,6 +69,12 @@ void LinkedList<T>::iterator::operator++() {
 template <typename T>
 bool LinkedList<T>::iterator::operator==(const LinkedList::iterator& other) {
 	return other.m_node == this->m_node;
+}
+
+
+template <typename T>
+bool LinkedList<T>::iterator::operator!=(const LinkedList::iterator& other) {
+	return other.m_node != this->m_node;
 }
 
 template <typename T>
@@ -206,4 +214,9 @@ void LinkedList<T>::remove(const T& value) {
 template <typename T>
 typename LinkedList<T>::iterator LinkedList<T>::begin() {
 	return LinkedList<T>::iterator(this->m_head);
+}
+
+template <typename T>
+typename LinkedList<T>::iterator LinkedList<T>::end() {
+	return LinkedList<T>::iterator(nullptr);
 }

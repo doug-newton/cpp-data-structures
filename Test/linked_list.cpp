@@ -212,3 +212,34 @@ TEST(LinkedList, Iterator_Begin) {
 
 	EXPECT_EQ((*it)->getValue(), 12);
 }
+
+TEST(LinkedList, Iterator_End) {
+	LinkedList<int> list;
+	list.append(12);
+
+	LinkedList<int>::iterator it = list.end();
+
+	EXPECT_EQ(*it, nullptr);
+}
+
+TEST(LinkedList, Iterator_Forward) {
+	LinkedList<int> list;
+
+	list.append(1);
+	list.append(2);
+	list.append(3);
+
+	int expected[]{ 1, 2, 3 };
+	int actual[3];
+
+	int i = 0;
+
+	for (LinkedList<int>::iterator it = list.begin(); it != list.end(); ++it) {
+		actual[i] = (*it)->getValue();
+		i++;
+	}
+
+	for (int i = 0; i < 3; i++) {
+		EXPECT_EQ(actual[i], expected[i]);
+	}
+}
