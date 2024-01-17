@@ -12,6 +12,7 @@ public:
 		iterator(Node<T>* node);
 		Node<T>* operator*();
 		void operator++();
+		bool operator==(const iterator& other);
 
 	private:
 
@@ -61,6 +62,11 @@ void LinkedList<T>::iterator::operator++() {
 	}
 
 	this->m_node = this->m_node->next();
+}
+
+template <typename T>
+bool LinkedList<T>::iterator::operator==(const LinkedList::iterator& other) {
+	return other.m_node == this->m_node;
 }
 
 template <typename T>
