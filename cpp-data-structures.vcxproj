@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="linked_list.h" />
     <ClInclude Include="node.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
