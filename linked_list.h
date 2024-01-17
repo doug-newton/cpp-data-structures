@@ -15,6 +15,9 @@ public:
 
 	int count();
 
+	void append(const T& value);
+	void prepend(const T& value);
+
 private:
 
 	Node<T>* m_head;
@@ -64,4 +67,30 @@ int LinkedList<T>::count() {
 	}
 
 	return count;
+}
+
+template <typename T>
+void LinkedList<T>::append(const T& value) {
+	Node<T>* node = new Node<int>(value);
+
+	if (this->m_head == nullptr && this->m_tail == nullptr) {
+		this->m_head = this->m_tail = node;
+		return;
+	}
+
+	this->m_tail->append(node);
+	this->m_tail = node;
+}
+
+template <typename T>
+void LinkedList<T>::prepend(const T& value) {
+	Node<T>* node = new Node<int>(value);
+
+	if (this->m_head == nullptr && this->m_tail == nullptr) {
+		this->m_head = this->m_tail = node;
+		return;
+	}
+
+	this->m_head->prepend(node);
+	this->m_head = node;
 }
