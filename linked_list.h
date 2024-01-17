@@ -46,6 +46,9 @@ void LinkedList<T>::clear() {
 		delete node;
 		node = temp;
 	}
+
+	this->m_head = nullptr;
+	this->m_tail = nullptr;
 }
 
 template <typename T>

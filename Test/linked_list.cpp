@@ -8,6 +8,22 @@ TEST(LinkedList, Constructor) {
 	EXPECT_EQ(list.tail(), nullptr);
 }
 
+TEST(LinkedList, Clear) {
+	LinkedList<int> list;
+
+	list.append(12);
+	list.append(23);
+	list.append(45);
+
+	EXPECT_EQ(list.count(), 3);
+
+	list.clear();
+
+	EXPECT_EQ(list.count(), 0);
+	EXPECT_EQ(list.head(), nullptr);
+	EXPECT_EQ(list.tail(), nullptr);
+}
+
 TEST(LinkedList, Count_Empty) {
 	LinkedList<int> list;
 
