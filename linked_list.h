@@ -18,6 +18,8 @@ public:
 	void append(const T& value);
 	void prepend(const T& value);
 
+	Node<T>* element_at(int pos);
+
 private:
 
 	Node<T>* m_head;
@@ -93,4 +95,17 @@ void LinkedList<T>::prepend(const T& value) {
 
 	this->m_head->prepend(node);
 	this->m_head = node;
+}
+
+template <typename T>
+Node<T>* LinkedList<T>::element_at(int pos) {
+	Node<T>* node = this->m_head;
+	int p = 0;
+
+	while (p < pos && node != nullptr) {
+		node = node->next();
+		p++;
+	}
+
+	return node;
 }

@@ -33,3 +33,34 @@ TEST(LinkedList, Prepend_First) {
 	EXPECT_FALSE(list.tail() == nullptr);
 	EXPECT_EQ(list.count(), 1);
 }
+
+TEST(LinkedList, ElementAt_Empty) {
+	LinkedList<int> list;
+
+	Node<int>* result = list.element_at(5);
+
+	EXPECT_EQ(result, nullptr);
+}
+
+TEST(LinkedList, ElementAt_OutOfRange) {
+	LinkedList<int> list;
+
+	list.append(23);
+	list.append(34);
+
+	Node<int>* result = list.element_at(2);
+
+	EXPECT_EQ(result, nullptr);
+}
+
+TEST(LinkedList, ElementAt_Valid) {
+	LinkedList<int> list;
+
+	list.append(23);
+	list.append(34);
+
+	Node<int>* result = list.element_at(1);
+
+	EXPECT_FALSE(result == nullptr);
+	EXPECT_EQ(result->getValue(), 34);
+}
