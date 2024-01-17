@@ -148,10 +148,12 @@ void LinkedList<T>::remove(const T& value) {
 	else if (prev == nullptr) {
 		//	node is the head, so next becomes head
 		this->m_head = next;
+		this->m_head->prepend(nullptr);
 	}
 	else if (next == nullptr) {
 		//	node is the tail, so prev becomes tail
 		this->m_tail = prev;
+		this->m_tail->append(nullptr);
 	}
 	else {
 		//	prev and append exist, so join together
