@@ -12,6 +12,7 @@ public:
 		iterator(Node<T>* node);
 		Node<T>* operator*();
 		void operator++();
+		void operator--();
 		bool operator==(const iterator& other);
 		bool operator!=(const iterator& other);
 
@@ -40,6 +41,7 @@ public:
 	void remove(const T& value);
 
 	iterator begin();
+	iterator begin_reverse();
 	iterator end();
 
 private:
@@ -56,6 +58,16 @@ template <typename T>
 Node<T>* LinkedList<T>::iterator::operator*() {
 	return this->m_node;
 }
+
+template <typename T>
+void LinkedList<T>::iterator::operator--() {
+	if (this->m_node == nullptr) {
+		return;
+	}
+
+	this->m_node = this->m_node->prev();
+}
+
 
 template <typename T>
 void LinkedList<T>::iterator::operator++() {
@@ -214,6 +226,11 @@ void LinkedList<T>::remove(const T& value) {
 template <typename T>
 typename LinkedList<T>::iterator LinkedList<T>::begin() {
 	return LinkedList<T>::iterator(this->m_head);
+}
+
+template <typename T>
+typename LinkedList<T>::iterator LinkedList<T>::begin_reverse() {
+	return LinkedList<T>::iterator(this->m_tail);
 }
 
 template <typename T>

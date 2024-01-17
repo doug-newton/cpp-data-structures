@@ -243,3 +243,25 @@ TEST(LinkedList, Iterator_Forward) {
 		EXPECT_EQ(actual[i], expected[i]);
 	}
 }
+
+TEST(LinkedList, Iterator_Reverse) {
+	LinkedList<int> list;
+
+	list.append(1);
+	list.append(2);
+	list.append(3);
+
+	int expected[]{ 3, 2, 1 };
+	int actual[3];
+
+	int i = 0;
+
+	for (LinkedList<int>::iterator it = list.begin_reverse(); it != list.end(); --it) {
+		actual[i] = (*it)->getValue();
+		i++;
+	}
+
+	for (int i = 0; i < 3; i++) {
+		EXPECT_EQ(actual[i], expected[i]);
+	}
+}
