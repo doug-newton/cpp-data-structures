@@ -19,6 +19,7 @@ public:
 	void prepend(const T& value);
 
 	Node<T>* element_at(int pos);
+	Node<T>* find(const T& value);
 
 private:
 
@@ -108,4 +109,18 @@ Node<T>* LinkedList<T>::element_at(int pos) {
 	}
 
 	return node;
+}
+
+template <typename T>
+Node<T>* LinkedList<T>::find(const T& value) {
+	Node<T>* node = this->m_head;
+
+	while (node != nullptr) {
+		if (node->getValue() == value) {
+			return node;
+		}
+		node = node->next();
+	}
+
+	return nullptr;
 }

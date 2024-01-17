@@ -94,3 +94,33 @@ TEST(LinkedList, ElementAt_Valid) {
 	EXPECT_FALSE(result == nullptr);
 	EXPECT_EQ(result->getValue(), 34);
 }
+
+TEST(LinkedList, Find_Empty) {
+	LinkedList<int> list;
+
+	Node<int>* result = list.find(42);
+
+	EXPECT_EQ(result, nullptr);
+}
+
+TEST(LinkedList, Find_Missing) {
+	LinkedList<int> list;
+
+	list.append(23);
+
+	Node<int>* result = list.find(42);
+
+	EXPECT_EQ(result, nullptr);
+}
+
+TEST(LinkedList, Find_Exists) {
+	LinkedList<int> list;
+
+	list.append(23);
+	list.append(45);
+	list.append(56);
+
+	Node<int>* result = list.find(45);
+
+	EXPECT_EQ(result->getValue(), 45);
+}
