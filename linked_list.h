@@ -11,6 +11,7 @@ public:
 
 		iterator(Node<T>* node);
 		Node<T>* operator*();
+		void operator++();
 
 	private:
 
@@ -51,6 +52,15 @@ LinkedList<T>::iterator::iterator(Node<T>* node) :
 template <typename T>
 Node<T>* LinkedList<T>::iterator::operator*() {
 	return this->m_node;
+}
+
+template <typename T>
+void LinkedList<T>::iterator::operator++() {
+	if (this->m_node == nullptr) {
+		return;
+	}
+
+	this->m_node = this->m_node->next();
 }
 
 template <typename T>
