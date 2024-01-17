@@ -7,3 +7,9 @@ TEST(LinkedList, Constructor) {
 	EXPECT_EQ(list.head(), nullptr);
 	EXPECT_EQ(list.tail(), nullptr);
 }
+
+TEST(LinkedList, Count_Empty) {
+	LinkedList<int> list;
+
+	EXPECT_EQ(list.count(), 0);
+}

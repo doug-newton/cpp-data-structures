@@ -10,6 +10,8 @@ public:
 	Node<T>* head();
 	Node<T>* tail();
 
+	int count();
+
 private:
 
 	Node<T>* m_head;
@@ -29,4 +31,18 @@ Node<T>* LinkedList<T>::head() {
 template <typename T>
 Node<T>* LinkedList<T>::tail() {
 	return this->m_tail;
+}
+
+template <typename T>
+int LinkedList<T>::count() {
+	int count = 0;
+
+	Node<T>* node = this->m_head;
+
+	while (node != nullptr) {
+		count++;
+		node = node->next();
+	}
+
+	return count;
 }
