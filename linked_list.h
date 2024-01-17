@@ -21,6 +21,8 @@ public:
 	Node<T>* element_at(int pos);
 	Node<T>* find(const T& value);
 
+	void remove(const T& value);
+
 private:
 
 	Node<T>* m_head;
@@ -126,4 +128,35 @@ Node<T>* LinkedList<T>::find(const T& value) {
 	}
 
 	return nullptr;
+}
+
+template <typename T>
+void LinkedList<T>::remove(const T& value) {
+	Node<T>* node = this->find(value);
+
+	if (node == nullptr) {
+		return;
+	}
+
+	Node<T>* prev = node->prev();
+	Node<T>* next = node->next();
+
+	if (prev == nullptr && next == nullptr) {
+		this->m_head = nullptr;
+		this->m_tail = nullptr;
+	}
+	else if (prev == nullptr) {
+		//	node is the head, so next becomes head
+		this->m_head = next;
+	}
+	else if (next == nullptr) {
+		//	node is the tail, so prev becomes tail
+		this->m_tail = prev;
+	}
+	else {
+		//	prev and append exist, so join together
+		prev->append(next);
+	}
+
+	delete node;
 }

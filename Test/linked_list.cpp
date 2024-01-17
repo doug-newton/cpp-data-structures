@@ -140,3 +140,66 @@ TEST(LinkedList, Find_Exists) {
 
 	EXPECT_EQ(result->getValue(), 45);
 }
+
+TEST(LinkedList, Remove_NotExists) {
+	LinkedList<int> list;
+
+	list.append(12);
+	list.remove(23);
+
+	EXPECT_EQ(list.count(), 1);
+	EXPECT_EQ(list.element_at(0)->getValue(), 12);
+}
+
+TEST(LinkedList, Remove_Only) {
+	LinkedList<int> list;
+
+	list.append(23);
+	list.remove(23);
+
+	EXPECT_EQ(list.count(), 0);
+}
+
+TEST(LinkedList, Remove_Middle) {
+	LinkedList<int> list;
+
+	list.append(12);
+	list.append(23);
+	list.append(34);
+
+	list.remove(23);
+
+	EXPECT_EQ(list.count(), 2);
+
+	Node<int>* first = list.element_at(0);
+	Node<int>* last = list.element_at(1);
+
+	EXPECT_EQ(first->next(), last);
+	EXPECT_EQ(last->prev(), first);
+}
+
+TEST(LinkedList, Remove_First) {
+	LinkedList<int> list;
+
+	list.append(12);
+	list.append(23);
+	list.append(34);
+
+	list.remove(12);
+
+	EXPECT_EQ(list.count(), 2);
+	EXPECT_EQ(list.head()->getValue(), 23);
+}
+
+TEST(LinkedList, Remove_Last) {
+	LinkedList<int> list;
+
+	list.append(12);
+	list.append(23);
+	list.append(34);
+
+	list.remove(34);
+
+	EXPECT_EQ(list.count(), 2);
+	EXPECT_EQ(list.tail()->getValue(), 23);
+}
