@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "../../linked_list/node.h"
 
+using newton_ds::linked_list::Node;
+
 TEST(Node, Constructor) {
 	Node<int> n(42);
 	EXPECT_EQ(n.getValue(), 42);

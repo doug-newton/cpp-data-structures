@@ -1,59 +1,65 @@
 #pragma once
 
-template <typename T>
-class Node {
+namespace newton_ds {
+	namespace linked_list {
 
-public:
+		template <typename T>
+		class Node {
 
-	Node(T data);
-	T getValue();
+		public:
 
-	Node<T>* next();
-	Node<T>* prev();
+			Node(T data);
+			T getValue();
 
-	void append(Node<T>* node);
-	void prepend(Node<T>* node);
+			Node<T>* next();
+			Node<T>* prev();
 
-private:
+			void append(Node<T>* node);
+			void prepend(Node<T>* node);
 
-	T m_data;
-	Node<T>* m_next;
-	Node<T>* m_prev;
-};
+		private:
 
-template <typename T>
-Node<T>::Node(T data) :
-	m_data(data),
-	m_next(nullptr),
-	m_prev(nullptr) { }
+			T m_data;
+			Node<T>* m_next;
+			Node<T>* m_prev;
+		};
 
-template <typename T>
-T Node<T>::getValue() {
-	return this->m_data;
-}
+		template <typename T>
+		Node<T>::Node(T data) :
+			m_data(data),
+			m_next(nullptr),
+			m_prev(nullptr) { }
 
-template <typename T>
-Node<T>* Node<T>::next() {
-	return this->m_next;
-}
+		template <typename T>
+		T Node<T>::getValue() {
+			return this->m_data;
+		}
 
-template <typename T>
-Node<T>* Node<T>::prev() {
-	return this->m_prev;
-}
+		template <typename T>
+		Node<T>* Node<T>::next() {
+			return this->m_next;
+		}
 
-template <typename T>
-void Node<T>::append(Node<T>* node) {
-	this->m_next = node;
-	if (node != nullptr) {
-		node->m_prev = this;
-	}
-}
+		template <typename T>
+		Node<T>* Node<T>::prev() {
+			return this->m_prev;
+		}
 
-template <typename T>
-void Node<T>::prepend(Node<T>* node) {
-	this->m_prev = node;
-	if (node != nullptr) {
-		node->m_next = this;
+		template <typename T>
+		void Node<T>::append(Node<T>* node) {
+			this->m_next = node;
+			if (node != nullptr) {
+				node->m_prev = this;
+			}
+		}
+
+		template <typename T>
+		void Node<T>::prepend(Node<T>* node) {
+			this->m_prev = node;
+			if (node != nullptr) {
+				node->m_next = this;
+			}
+		}
+
 	}
 }
