@@ -36,7 +36,7 @@ namespace newton_ds {
 			return input.substr(1, input.length() - 2);
 		}
 
-		SplitResult StringUtil::split(const std::string& input, char delim) {
+		SplitResult split_by_delim(const std::string& input, char delim) {
 			int bracketCounter = 0;
 
 			SplitResult result;

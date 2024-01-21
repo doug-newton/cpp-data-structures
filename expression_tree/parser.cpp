@@ -7,7 +7,7 @@ namespace newton_ds {
 		Node* Parser::parse(const std::string& expression) {
 			std::string inner_expression = strip_outer_brackets(expression);
 
-			SplitResult result = StringUtil::split(inner_expression, '+');
+			SplitResult result = split_by_delim(inner_expression, '+');
 
 			if (result.result == SplitResult::ResultValue::OK) {
 				return new Node(
@@ -16,7 +16,7 @@ namespace newton_ds {
 					parse(result.right));
 			}
 
-			result = StringUtil::split(inner_expression, '-');
+			result = split_by_delim(inner_expression, '-');
 			
 			if (result.result == SplitResult::ResultValue::OK) {
 				return new Node(
@@ -25,7 +25,7 @@ namespace newton_ds {
 					parse(result.right));
 			}
 
-			result = StringUtil::split(inner_expression, '*');
+			result = split_by_delim(inner_expression, '*');
 			
 			if (result.result == SplitResult::ResultValue::OK) {
 				return new Node(
@@ -34,7 +34,7 @@ namespace newton_ds {
 					parse(result.right));
 			}
 
-			result = StringUtil::split(inner_expression, '/');
+			result = split_by_delim(inner_expression, '/');
 			
 			if (result.result == SplitResult::ResultValue::OK) {
 				return new Node(
