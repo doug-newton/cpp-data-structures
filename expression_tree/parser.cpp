@@ -9,34 +9,43 @@ namespace newton_ds {
 			SplitResult result = StringUtil::split(expression, '+');
 
 			if (result.result == SplitResult::ResultValue::OK) {
-				double left_value = std::stod(result.left);
-				double right_value = std::stod(result.right);
-				return new Node(new Node(left_value), Operator::ADD, new Node(right_value));
+				return new Node(
+					parse(result.left),
+					Operator::ADD, 
+					parse(result.right));
 			}
 
 			result = StringUtil::split(expression, '-');
 			
 			if (result.result == SplitResult::ResultValue::OK) {
-				double left_value = std::stod(result.left);
-				double right_value = std::stod(result.right);
-				return new Node(new Node(left_value), Operator::SUBTRACT, new Node(right_value));
+				return new Node(
+					parse(result.left),
+					Operator::SUBTRACT, 
+					parse(result.right));
 			}
 
 			result = StringUtil::split(expression, '*');
 			
 			if (result.result == SplitResult::ResultValue::OK) {
-				double left_value = std::stod(result.left);
-				double right_value = std::stod(result.right);
-				return new Node(new Node(left_value), Operator::MULTIPLY, new Node(right_value));
+				return new Node(
+					parse(result.left),
+					Operator::MULTIPLY, 
+					parse(result.right));
 			}
 
 			result = StringUtil::split(expression, '/');
 			
 			if (result.result == SplitResult::ResultValue::OK) {
-				double left_value = std::stod(result.left);
-				double right_value = std::stod(result.right);
-				return new Node(new Node(left_value), Operator::DIVIDE, new Node(right_value));
+				return new Node(
+					parse(result.left),
+					Operator::DIVIDE, 
+					parse(result.right));
 			}
+
+			//	no operators found, so assume expression is a constant
+
+			double value = std::stod(expression);
+			return new Node(value);
 		}
 
 	}

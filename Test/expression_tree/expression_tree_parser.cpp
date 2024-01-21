@@ -4,6 +4,14 @@
 using newton_ds::expression_tree::Node;
 using newton_ds::expression_tree::Parser;
 
+TEST(ExpressionTreeParser, Parse_Value) {
+	const std::string expression = "42";
+
+	Node* result = Parser::parse(expression);
+	EXPECT_EQ(result->getValue(), 42);
+
+	delete result;
+}
 TEST(ExpressionTreeParser, Parse_Add) {
 	const std::string expression = "10+5";
 

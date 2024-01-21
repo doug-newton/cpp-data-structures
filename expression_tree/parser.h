@@ -11,7 +11,6 @@ namespace newton_ds {
 
 		public:
 			static Node* parse(const std::string& expression);
-
 		};
 
 	}
