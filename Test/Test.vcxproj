@@ -34,6 +34,8 @@
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
     <ClCompile Include="expression_tree\expression_tree_node.cpp" />
+    <ClCompile Include="expression_tree\expression_tree_parser.cpp" />
+    <ClCompile Include="expression_tree\expression_tree_string_util.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="linked_list\linked_list.cpp" />
     <ClCompile Include="linked_list\node.cpp" />

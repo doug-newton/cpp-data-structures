@@ -27,12 +27,24 @@
     <ClInclude Include="expression_tree\division_by_zero_exception.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="expression_tree\parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="expression_tree\string_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="expression_tree\operator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="expression_tree\node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="expression_tree\parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="expression_tree\string_util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
