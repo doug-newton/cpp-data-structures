@@ -24,6 +24,18 @@ namespace newton_ds {
 			return num_outer_brackets;
 		}
 
+		std::string strip_outer_brackets(const std::string& input) {
+			if (input[0] != '(' || input[input.length() - 1] != ')') {
+				return input;
+			}
+
+			if (count_outer_bracket_pairs(input) > 1) {
+				return input;
+			}
+
+			return input.substr(1, input.length() - 2);
+		}
+
 		SplitResult StringUtil::split(const std::string& input, char delim) {
 			int bracketCounter = 0;
 

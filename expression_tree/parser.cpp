@@ -5,7 +5,7 @@ namespace newton_ds {
 	namespace expression_tree {
 
 		Node* Parser::parse(const std::string& expression) {
-			std::string inner_expression = stripOuterBrackets(expression);
+			std::string inner_expression = strip_outer_brackets(expression);
 
 			SplitResult result = StringUtil::split(inner_expression, '+');
 
@@ -49,17 +49,6 @@ namespace newton_ds {
 			return new Node(value);
 		}
 
-		std::string Parser::stripOuterBrackets(const std::string& input) {
-			if (input[0] != '(' || input[input.length() - 1] != ')') {
-				return input;
-			}
-
-			if (count_outer_bracket_pairs(input) > 1) {
-				return input;
-			}
-
-			return input.substr(1, input.length() - 2);
-		}
 
 	}
 }
