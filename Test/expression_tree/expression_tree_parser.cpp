@@ -56,13 +56,35 @@ TEST(ExpressionTreeParser, Parse_Multiply) {
 	delete result;
 }
 
-TEST(ExpressionTreeParser, Parse_Nested) {
+TEST(ExpressionTreeParser, Parse_Nested_1) {
 	const std::string expression = "(10/5)+1";
 
 	Node* result = Parser::parse(expression);
 
 	result->calculate();
 	EXPECT_EQ(result->getValue(), 3);
+
+	delete result;
+}
+
+TEST(ExpressionTreeParser, Parse_Nested_2) {
+	const std::string expression = "(10-5)*(2+3)";
+
+	Node* result = Parser::parse(expression);
+
+	result->calculate();
+	EXPECT_EQ(result->getValue(), 25);
+
+	delete result;
+}
+
+TEST(ExpressionTreeParser, Parse_Nested_3) {
+	const std::string expression = "(10-5)*(2*(12-10))";
+
+	Node* result = Parser::parse(expression);
+
+	result->calculate();
+	EXPECT_EQ(result->getValue(), 20);
 
 	delete result;
 }

@@ -54,6 +54,10 @@ namespace newton_ds {
 				return input;
 			}
 
+			if (count_outer_bracket_pairs(input) > 1) {
+				return input;
+			}
+
 			return input.substr(1, input.length() - 2);
 		}
 

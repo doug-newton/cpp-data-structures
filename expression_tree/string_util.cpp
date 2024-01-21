@@ -4,6 +4,26 @@
 namespace newton_ds {
 	namespace expression_tree {
 
+		int count_outer_bracket_pairs(const std::string& input) {
+			int bracket_balance = 0;
+			int num_outer_brackets = 0;
+			int str_len = input.length();
+
+			for (int pos = 0; pos < str_len; pos++) {
+				if (input[pos] == '(') {
+					bracket_balance++;
+				}
+				if (input[pos] == ')') {
+					bracket_balance--;
+					if (bracket_balance == 0) {
+						num_outer_brackets++;
+					}
+				}
+			}
+
+			return num_outer_brackets;
+		}
+
 		SplitResult StringUtil::split(const std::string& input, char delim) {
 			int bracketCounter = 0;
 

@@ -20,6 +20,7 @@ namespace newton_ds {
 			static SplitResult split(const std::string& input, char delim);
 		};
 
+		int count_outer_bracket_pairs(const std::string& input);
 
 	}
 }
