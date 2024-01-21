@@ -45,7 +45,7 @@ TEST(ExpressionTreeParser, Parse_Multiply) {
 	delete result;
 }
 
-TEST(ExpressionTreeParser, Parse_Divide) {
+ TEST(ExpressionTreeParser, Parse_Divide) {
 	const std::string expression = "10/5";
 
 	Node* result = Parser::parse(expression);
@@ -55,3 +55,15 @@ TEST(ExpressionTreeParser, Parse_Divide) {
 
 	delete result;
 }
+
+TEST(ExpressionTreeParser, Parse_Nested) {
+	const std::string expression = "(10/5)+1";
+
+	Node* result = Parser::parse(expression);
+
+	result->calculate();
+	EXPECT_EQ(result->getValue(), 3);
+
+	delete result;
+}
+

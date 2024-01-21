@@ -21,3 +21,13 @@ TEST(ExpressionTree_StringUtil, Split_NotFound) {
 
 	EXPECT_EQ(result.result, SplitResult::ResultValue::FAIL);
 }
+
+TEST(ExpressionTree_StringUtil, Split_OuterDelim) {
+	std::string input = "12+(34+56)";
+
+	SplitResult result = StringUtil::split(input, '+');
+
+	EXPECT_EQ(result.result, SplitResult::ResultValue::OK);
+	EXPECT_EQ(result.left, std::string("12"));
+	EXPECT_EQ(result.right, std::string("(34+56)"));
+}

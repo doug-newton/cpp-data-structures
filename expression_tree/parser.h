@@ -11,6 +11,7 @@ namespace newton_ds {
 
 		public:
 			static Node* parse(const std::string& expression);
+			static std::string stripOuterBrackets(const std::string& input);
 		};
 
 	}

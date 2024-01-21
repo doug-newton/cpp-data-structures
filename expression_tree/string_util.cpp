@@ -5,18 +5,34 @@ namespace newton_ds {
 	namespace expression_tree {
 
 		SplitResult StringUtil::split(const std::string& input, char delim) {
+			int bracketCounter = 0;
+
 			SplitResult result;
 
-			size_t pos = input.find(delim);
+			int pos = 0;
+			int len = input.length();
 
-			if (pos == std::string::npos) {
+			for (; pos < len; pos++) {
+				char c = input[pos];
+				if (c == '(') {
+					bracketCounter++;
+				}
+				else if (c == ')') {
+					bracketCounter--;
+				}
+				if (c == delim && bracketCounter == 0) {
+					break;
+				}
+			}
+
+			if (pos == len) {
 				result.result = SplitResult::ResultValue::FAIL;
+				return result;
 			}
-			else {
-				result.result = SplitResult::ResultValue::OK;
-				result.left = input.substr(0, pos);
-				result.right = input.substr(pos + 1, input.length() - pos);
-			}
+
+			result.result = SplitResult::ResultValue::OK;
+			result.left = input.substr(0, pos);
+			result.right = input.substr(pos + 1, input.length() - pos);
 
 			return result;
 		}

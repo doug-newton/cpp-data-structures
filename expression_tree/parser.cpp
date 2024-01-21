@@ -5,8 +5,9 @@ namespace newton_ds {
 	namespace expression_tree {
 
 		Node* Parser::parse(const std::string& expression) {
+			std::string inner_expression = stripOuterBrackets(expression);
 
-			SplitResult result = StringUtil::split(expression, '+');
+			SplitResult result = StringUtil::split(inner_expression, '+');
 
 			if (result.result == SplitResult::ResultValue::OK) {
 				return new Node(
@@ -15,7 +16,7 @@ namespace newton_ds {
 					parse(result.right));
 			}
 
-			result = StringUtil::split(expression, '-');
+			result = StringUtil::split(inner_expression, '-');
 			
 			if (result.result == SplitResult::ResultValue::OK) {
 				return new Node(
@@ -24,7 +25,7 @@ namespace newton_ds {
 					parse(result.right));
 			}
 
-			result = StringUtil::split(expression, '*');
+			result = StringUtil::split(inner_expression, '*');
 			
 			if (result.result == SplitResult::ResultValue::OK) {
 				return new Node(
@@ -33,7 +34,7 @@ namespace newton_ds {
 					parse(result.right));
 			}
 
-			result = StringUtil::split(expression, '/');
+			result = StringUtil::split(inner_expression, '/');
 			
 			if (result.result == SplitResult::ResultValue::OK) {
 				return new Node(
@@ -44,8 +45,16 @@ namespace newton_ds {
 
 			//	no operators found, so assume expression is a constant
 
-			double value = std::stod(expression);
+			double value = std::stod(inner_expression);
 			return new Node(value);
+		}
+
+		std::string Parser::stripOuterBrackets(const std::string& input) {
+			if (input[0] != '(' || input[input.length() - 1] != ')') {
+				return input;
+			}
+
+			return input.substr(1, input.length() - 2);
 		}
 
 	}
