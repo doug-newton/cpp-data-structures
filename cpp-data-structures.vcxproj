@@ -19,8 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="expression_tree\node.h" />
     <ClInclude Include="linked_list\linked_list.h" />
     <ClInclude Include="linked_list\node.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="expression_tree\operator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="expression_tree\node.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

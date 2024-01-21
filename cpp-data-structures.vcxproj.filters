@@ -21,5 +21,16 @@
     <ClInclude Include="linked_list\node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="expression_tree\node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="expression_tree\operator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="expression_tree\node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

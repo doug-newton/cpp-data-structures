@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "../pch.h"
 #include "../../linked_list/linked_list.h"
 
 using newton_ds::linked_list::LinkedList;
