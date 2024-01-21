@@ -46,11 +46,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cpp-data-structures.vcxproj">
-      <Project>{559ba819-d39e-467d-81a4-6e3dee149ef0}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemDefinitionGroup />
