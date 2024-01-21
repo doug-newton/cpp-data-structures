@@ -7,9 +7,9 @@ namespace newton_ds {
 		Node* Parser::parse(const std::string& expression) {
 			std::string inner_expression = strip_outer_brackets(expression);
 
-			SplitResult result = split_by_delim(inner_expression, '+');
+			split_by_delim_result result = split_by_delim(inner_expression, '+');
 
-			if (result.result == SplitResult::ResultValue::OK) {
+			if (result.result == split_by_delim_result::OK) {
 				return new Node(
 					parse(result.left),
 					Operator::ADD, 
@@ -18,7 +18,7 @@ namespace newton_ds {
 
 			result = split_by_delim(inner_expression, '-');
 			
-			if (result.result == SplitResult::ResultValue::OK) {
+			if (result.result == split_by_delim_result::OK) {
 				return new Node(
 					parse(result.left),
 					Operator::SUBTRACT, 
@@ -27,7 +27,7 @@ namespace newton_ds {
 
 			result = split_by_delim(inner_expression, '*');
 			
-			if (result.result == SplitResult::ResultValue::OK) {
+			if (result.result == split_by_delim_result::OK) {
 				return new Node(
 					parse(result.left),
 					Operator::MULTIPLY, 
@@ -36,7 +36,7 @@ namespace newton_ds {
 
 			result = split_by_delim(inner_expression, '/');
 			
-			if (result.result == SplitResult::ResultValue::OK) {
+			if (result.result == split_by_delim_result::OK) {
 				return new Node(
 					parse(result.left),
 					Operator::DIVIDE, 

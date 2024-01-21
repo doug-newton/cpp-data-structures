@@ -36,10 +36,10 @@ namespace newton_ds {
 			return input.substr(1, input.length() - 2);
 		}
 
-		SplitResult split_by_delim(const std::string& input, char delim) {
+		split_by_delim_result split_by_delim(const std::string& input, char delim) {
 			int bracketCounter = 0;
 
-			SplitResult result;
+			split_by_delim_result result;
 
 			int pos = 0;
 			int len = input.length();
@@ -58,11 +58,11 @@ namespace newton_ds {
 			}
 
 			if (pos == len) {
-				result.result = SplitResult::ResultValue::FAIL;
+				result.result = split_by_delim_result::FAIL;
 				return result;
 			}
 
-			result.result = SplitResult::ResultValue::OK;
+			result.result = split_by_delim_result::OK;
 			result.left = input.substr(0, pos);
 			result.right = input.substr(pos + 1, input.length() - pos);
 
