@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="node.h">
+    <ClInclude Include="linked_list\linked_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="linked_list.h">
+    <ClInclude Include="linked_list\node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
