@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="expression_tree\division_by_zero_exception.h" />
     <ClInclude Include="expression_tree\node.h" />
     <ClInclude Include="linked_list\linked_list.h" />
     <ClInclude Include="linked_list\node.h" />

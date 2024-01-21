@@ -46,18 +46,24 @@ namespace newton_ds {
 				this->m_right->calculate();
 			}
 
+			double left_value = this->m_left->getValue();
+			double right_value = this->m_right->getValue();
+
 			switch (this->m_operator) {
 			case ADD:
-				this->m_value = this->m_left->getValue() + this->m_right->getValue();
+				this->m_value = left_value + right_value;
 				break;
 			case SUBTRACT:
-				this->m_value = this->m_left->getValue() - this->m_right->getValue();
+				this->m_value = left_value - right_value;
 				break;
 			case MULTIPLY:
-				this->m_value = this->m_left->getValue() * this->m_right->getValue();
+				this->m_value = left_value * right_value;
 				break;
 			case DIVIDE:
-				this->m_value = this->m_left->getValue() / this->m_right->getValue();
+				if (right_value == 0) {
+					throw DivisionByZeroException();
+				}
+				this->m_value = left_value / right_value;
 				break;
 			}
 

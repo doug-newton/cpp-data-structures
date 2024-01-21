@@ -1,6 +1,7 @@
 #pragma once
 
 #include "operator.h"
+#include "division_by_zero_exception.h"
 
 namespace newton_ds {
 	namespace expression_tree {
