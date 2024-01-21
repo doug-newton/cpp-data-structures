@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../linked_list/node.h"
+#include "../../linked_list/node.h"
 
 TEST(Node, Constructor) {
 	Node<int> n(42);

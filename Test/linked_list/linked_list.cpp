@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../linked_list/linked_list.h"
+#include "../../linked_list/linked_list.h"
 
 TEST(LinkedList, Constructor) {
 	LinkedList<int> list;
