@@ -1,5 +1,5 @@
 #include "../pch.h"
-#include "../../expression_tree/string_util.h"
+#include "../../expression_tree/parsing.h"
 
 using newton_ds::expression_tree::split_by_operator;
 using newton_ds::expression_tree::operator_split_result;

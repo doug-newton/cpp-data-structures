@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClInclude Include="expression_tree\division_by_zero_exception.h" />
     <ClInclude Include="expression_tree\node.h" />
-    <ClInclude Include="expression_tree\string_util.h" />
+    <ClInclude Include="expression_tree\parsing.h" />
     <ClInclude Include="linked_list\linked_list.h" />
     <ClInclude Include="linked_list\node.h" />
   </ItemGroup>
@@ -30,7 +30,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="expression_tree\node.cpp" />
-    <ClCompile Include="expression_tree\string_util.cpp" />
+    <ClCompile Include="expression_tree\parsing\to_operator.cpp" />
+    <ClCompile Include="expression_tree\parsing\count_outer_bracket_pairs.cpp" />
+    <ClCompile Include="expression_tree\parsing\parse.cpp" />
+    <ClCompile Include="expression_tree\parsing\split_by_operator.cpp" />
+    <ClCompile Include="expression_tree\parsing\strip_outer_brackets.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

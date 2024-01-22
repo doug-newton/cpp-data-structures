@@ -1,5 +1,5 @@
 #include "../pch.h"
-#include "../../expression_tree/string_util.h"
+#include "../../expression_tree/parsing.h"
 
 using newton_ds::expression_tree::Node;
 using newton_ds::expression_tree::parse;
