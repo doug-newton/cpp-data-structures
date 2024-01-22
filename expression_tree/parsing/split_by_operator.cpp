@@ -35,8 +35,9 @@ namespace newton_ds {
 					continue;
 				}
 
-				if (is_operator(c)) {
-					result.op = to_operator(c);
+				result.op = to_operator(c);
+
+				if (result.op != NONE) {
 					result.status = operator_split_result::FOUND;
 					break;
 				}
