@@ -4,6 +4,15 @@
 namespace newton_ds {
 	namespace expression_tree {
 
+		/*
+		* counts bracket pairs by adding and subtracting from a balance factor
+		* when balance factor is 0, an outer bracket pair has been closed
+		* e.g. this has 2 sets of outer brackets
+		* (1+2)-(1+2)
+		* and this has one set of outer brackets
+		* (1+(1-2))
+		*/
+
 		int count_outer_bracket_pairs(const std::string& input) {
 			int bracket_balance = 0;
 			int num_outer_brackets = 0;
@@ -36,8 +45,14 @@ namespace newton_ds {
 			return input.substr(1, input.length() - 2);
 		}
 
-		split_by_delim_result split_by_delim(const std::string& input, char delim) {
-			int bracketCounter = 0;
+		/*
+		* splits by a delimeter if not between brackets, 
+		* by counting the number of opening and closing brackets
+		* splitting (4+3)+2 with delimeter '+' will split into (4+3) and 2
+		*/
+
+		split_by_delim_result split_by_delim_outside_brackets(const std::string& input, char delim) {
+			int bracket_balance = 0;
 
 			split_by_delim_result result;
 
@@ -47,12 +62,12 @@ namespace newton_ds {
 			for (; pos < len; pos++) {
 				char c = input[pos];
 				if (c == '(') {
-					bracketCounter++;
+					bracket_balance++;
 				}
 				else if (c == ')') {
-					bracketCounter--;
+					bracket_balance--;
 				}
-				if (c == delim && bracketCounter == 0) {
+				if (c == delim && bracket_balance == 0) {
 					break;
 				}
 			}

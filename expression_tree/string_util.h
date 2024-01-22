@@ -14,7 +14,7 @@ namespace newton_ds {
 			std::string right;
 		};
 
-		split_by_delim_result split_by_delim(const std::string& input, char delim);
+		split_by_delim_result split_by_delim_outside_brackets(const std::string& input, char delim);
 		int count_outer_bracket_pairs(const std::string& input);
 		std::string strip_outer_brackets(const std::string& input);
 
