@@ -46,43 +46,11 @@ namespace newton_ds {
 		}
 
 		/*
-		* splits by a delimeter if not between brackets, 
+		* splits by any delimeter outside brackets, 
 		* by counting the number of opening and closing brackets
-		* splitting (4+3)+2 with delimeter '+' will split into (4+3) and 2
+		* e.g.
+		* splitting (4+3)+2 will split into (4+3) and 2 with Operator::PLUS
 		*/
-
-		split_by_delim_result split_by_delim_outside_brackets(const std::string& input, char delim) {
-			int bracket_balance = 0;
-
-			split_by_delim_result result;
-
-			int pos = 0;
-			int len = input.length();
-
-			for (; pos < len; pos++) {
-				char c = input[pos];
-				if (c == '(') {
-					bracket_balance++;
-				}
-				else if (c == ')') {
-					bracket_balance--;
-				}
-				if (c == delim && bracket_balance == 0) {
-					break;
-				}
-			}
-
-			if (pos == len) {
-				result.result = split_by_delim_result::FAIL;
-				return result;
-			}
-
-			result.result = split_by_delim_result::OK;
-			result.left = input.substr(0, pos);
-			result.right = input.substr(pos + 1, input.length() - pos);
-
-			return result;
-		}
 
 		operator_split_result split_by_operator(const std::string& input) {
 			operator_split_result result;
