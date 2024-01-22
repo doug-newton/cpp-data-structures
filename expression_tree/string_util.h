@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "operator.h"
 
 namespace newton_ds {
 	namespace expression_tree {
@@ -23,7 +24,7 @@ namespace newton_ds {
 				FOUND = 0,
 				NOT_FOUND
 			} status;
-			char op;
+			Operator op;
 			std::string left;
 			std::string right;
 		};
@@ -31,6 +32,7 @@ namespace newton_ds {
 		operator_split_result split_by_operator(const std::string& input);
 
 		bool is_operator(char c);
+		Operator to_operator(char c);
 
 	}
 }

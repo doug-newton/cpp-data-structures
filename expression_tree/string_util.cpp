@@ -110,7 +110,7 @@ namespace newton_ds {
 				}
 
 				if (is_operator(c)) {
-					result.op = c;
+					result.op = to_operator(c);
 					result.status = operator_split_result::FOUND;
 					break;
 				}
@@ -118,7 +118,7 @@ namespace newton_ds {
 			}
 
 			if (pos == str_len) {
-				result.op = ' ';
+				result.op = NONE;
 				result.status = operator_split_result::NOT_FOUND;
 				return result;
 			}
@@ -131,6 +131,16 @@ namespace newton_ds {
 
 		bool is_operator(char c) {
 			return c == '+' || c == '-' || c == '*' || c == '/';
+		}
+
+		Operator to_operator(char c) {
+			switch (c) {
+			case '+': return ADD;
+			case '-': return SUBTRACT;
+			case '*': return MULTIPLY;
+			case '/': return DIVIDE;
+			default: return NONE;
+			}
 		}
 
 	}
