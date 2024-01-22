@@ -7,46 +7,26 @@ namespace newton_ds {
 		Node* Parser::parse(const std::string& expression) {
 			std::string inner_expression = strip_outer_brackets(expression);
 
-			split_by_delim_result result = split_by_delim_outside_brackets(inner_expression, '+');
+			operator_split_result result = split_by_operator(inner_expression);
 
-			if (result.result == split_by_delim_result::OK) {
-				return new Node(
-					parse(result.left),
-					Operator::ADD, 
-					parse(result.right));
+			if (result.status == operator_split_result::NOT_FOUND) {
+				double value = std::stod(inner_expression);
+				return new Node(value);
 			}
 
-			result = split_by_delim_outside_brackets(inner_expression, '-');
-			
-			if (result.result == split_by_delim_result::OK) {
-				return new Node(
-					parse(result.left),
-					Operator::SUBTRACT, 
-					parse(result.right));
+			Operator op = NONE;
+
+			switch (result.op) {
+			case '+': op = ADD; break;
+			case '-': op = SUBTRACT; break;
+			case '*': op = MULTIPLY; break;
+			case '/': op = DIVIDE; break;
 			}
 
-			result = split_by_delim_outside_brackets(inner_expression, '*');
-			
-			if (result.result == split_by_delim_result::OK) {
-				return new Node(
-					parse(result.left),
-					Operator::MULTIPLY, 
-					parse(result.right));
-			}
-
-			result = split_by_delim_outside_brackets(inner_expression, '/');
-			
-			if (result.result == split_by_delim_result::OK) {
-				return new Node(
-					parse(result.left),
-					Operator::DIVIDE, 
-					parse(result.right));
-			}
-
-			//	no operators found, so assume expression is a constant
-
-			double value = std::stod(inner_expression);
-			return new Node(value);
+			return new Node(
+				parse(result.left),
+				op,
+				parse(result.right));
 		}
 
 
