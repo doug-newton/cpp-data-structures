@@ -2,6 +2,7 @@
 
 #include <string>
 #include "operator.h"
+#include "node.h"
 
 namespace newton_ds {
 	namespace expression_tree {
@@ -23,6 +24,8 @@ namespace newton_ds {
 
 		bool is_operator(char c);
 		Operator to_operator(char c);
+
+		Node* parse(const std::string& expression);
 
 	}
 }

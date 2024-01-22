@@ -1,13 +1,13 @@
 #include "../pch.h"
-#include "../../expression_tree/parser.h"
+#include "../../expression_tree/string_util.h"
 
 using newton_ds::expression_tree::Node;
-using newton_ds::expression_tree::Parser;
+using newton_ds::expression_tree::parse;
 
 TEST(ExpressionTreeParser, Parse_Value) {
 	const std::string expression = "42";
 
-	Node* result = Parser::parse(expression);
+	Node* result = parse(expression);
 	EXPECT_EQ(result->getValue(), 42);
 
 	delete result;
@@ -15,7 +15,7 @@ TEST(ExpressionTreeParser, Parse_Value) {
 TEST(ExpressionTreeParser, Parse_Add) {
 	const std::string expression = "10+5";
 
-	Node* result = Parser::parse(expression);
+	Node* result = parse(expression);
 
 	result->calculate();
 	EXPECT_EQ(result->getValue(), 15);
@@ -26,7 +26,7 @@ TEST(ExpressionTreeParser, Parse_Add) {
 TEST(ExpressionTreeParser, Parse_Subtract) {
 	const std::string expression = "10-5";
 
-	Node* result = Parser::parse(expression);
+	Node* result = parse(expression);
 
 	result->calculate();
 	EXPECT_EQ(result->getValue(), 5);
@@ -37,7 +37,7 @@ TEST(ExpressionTreeParser, Parse_Subtract) {
 TEST(ExpressionTreeParser, Parse_Multiply) {
 	const std::string expression = "10*5";
 
-	Node* result = Parser::parse(expression);
+	Node* result = parse(expression);
 
 	result->calculate();
 	EXPECT_EQ(result->getValue(), 50);
@@ -48,7 +48,7 @@ TEST(ExpressionTreeParser, Parse_Multiply) {
  TEST(ExpressionTreeParser, Parse_Divide) {
 	const std::string expression = "10/5";
 
-	Node* result = Parser::parse(expression);
+	Node* result = parse(expression);
 
 	result->calculate();
 	EXPECT_EQ(result->getValue(), 2);
@@ -59,7 +59,7 @@ TEST(ExpressionTreeParser, Parse_Multiply) {
 TEST(ExpressionTreeParser, Parse_Nested_1) {
 	const std::string expression = "(10/5)+1";
 
-	Node* result = Parser::parse(expression);
+	Node* result = parse(expression);
 
 	result->calculate();
 	EXPECT_EQ(result->getValue(), 3);
@@ -70,7 +70,7 @@ TEST(ExpressionTreeParser, Parse_Nested_1) {
 TEST(ExpressionTreeParser, Parse_Nested_2) {
 	const std::string expression = "(10-5)*(2+3)";
 
-	Node* result = Parser::parse(expression);
+	Node* result = parse(expression);
 
 	result->calculate();
 	EXPECT_EQ(result->getValue(), 25);
@@ -81,7 +81,7 @@ TEST(ExpressionTreeParser, Parse_Nested_2) {
 TEST(ExpressionTreeParser, Parse_Nested_3) {
 	const std::string expression = "(10-5)*(2*(12-10))";
 
-	Node* result = Parser::parse(expression);
+	Node* result = parse(expression);
 
 	result->calculate();
 	EXPECT_EQ(result->getValue(), 20);

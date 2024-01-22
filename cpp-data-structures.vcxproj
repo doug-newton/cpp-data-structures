@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="expression_tree\division_by_zero_exception.h" />
-    <ClInclude Include="expression_tree\parser.h" />
     <ClInclude Include="expression_tree\node.h" />
     <ClInclude Include="expression_tree\string_util.h" />
     <ClInclude Include="linked_list\linked_list.h" />
@@ -31,7 +30,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="expression_tree\node.cpp" />
-    <ClCompile Include="expression_tree\parser.cpp" />
     <ClCompile Include="expression_tree\string_util.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
