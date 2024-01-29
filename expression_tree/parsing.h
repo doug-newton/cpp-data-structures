@@ -17,7 +17,7 @@ namespace newton_ds {
 			std::string right;
 		};
 
-		int count_outer_bracket_pairs(const std::string& input);
+		int count_top_level_bracket_pairs(const std::string& input);
 		std::string strip_outer_brackets(const std::string& input);
 
 		operator_split_result split_by_operator(const std::string& input);

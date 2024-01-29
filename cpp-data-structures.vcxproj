@@ -31,7 +31,7 @@
   <ItemGroup>
     <ClCompile Include="expression_tree\node.cpp" />
     <ClCompile Include="expression_tree\parsing\to_operator.cpp" />
-    <ClCompile Include="expression_tree\parsing\count_outer_bracket_pairs.cpp" />
+    <ClCompile Include="expression_tree\parsing\count_top_level_bracket_pairs.cpp" />
     <ClCompile Include="expression_tree\parsing\parse.cpp" />
     <ClCompile Include="expression_tree\parsing\split_by_operator.cpp" />
     <ClCompile Include="expression_tree\parsing\strip_outer_brackets.cpp" />

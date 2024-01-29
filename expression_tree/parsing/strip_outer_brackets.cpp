@@ -8,7 +8,7 @@ namespace newton_ds {
 				return input;
 			}
 
-			if (count_outer_bracket_pairs(input) > 1) {
+			if (count_top_level_bracket_pairs(input) > 1) {
 				return input;
 			}
 

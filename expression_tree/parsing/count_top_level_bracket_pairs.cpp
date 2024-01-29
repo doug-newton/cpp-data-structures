@@ -12,7 +12,7 @@ namespace newton_ds {
 		* (1+(1-2))
 		*/
 
-		int count_outer_bracket_pairs(const std::string& input) {
+		int count_top_level_bracket_pairs(const std::string& input) {
 			int bracket_balance = 0;
 			int num_outer_brackets = 0;
 			int str_len = input.length();
