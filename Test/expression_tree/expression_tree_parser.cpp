@@ -12,6 +12,7 @@ TEST(ExpressionTreeParser, Parse_Value) {
 
 	delete result;
 }
+
 TEST(ExpressionTreeParser, Parse_Add) {
 	const std::string expression = "10+5";
 
@@ -85,6 +86,17 @@ TEST(ExpressionTreeParser, Parse_Nested_3) {
 
 	result->calculate();
 	EXPECT_EQ(result->getValue(), 20);
+
+	delete result;
+}
+
+TEST(ExpressionTreeParser, Parse_Double_Brackets) {
+	const std::string expression = "(((1+2)))";
+
+	Node* result = parse(expression);
+
+	result->calculate();
+	EXPECT_EQ(result->getValue(), 3);
 
 	delete result;
 }
