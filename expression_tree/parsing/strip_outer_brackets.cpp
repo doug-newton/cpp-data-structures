@@ -12,7 +12,7 @@ namespace newton_ds {
 				return input;
 			}
 
-			return input.substr(1, input.length() - 2);
+			return strip_outer_brackets(input.substr(1, input.length() - 2));
 		}
 
 	}
