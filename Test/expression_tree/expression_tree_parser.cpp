@@ -101,3 +101,25 @@ TEST(ExpressionTreeParser, Parse_Double_Brackets) {
 	delete result;
 }
 
+TEST(ExpressionTreeParser, Order_of_Operations_1) {
+	const std::string expression = "2+3*4";
+
+	Node* result = parse(expression);
+
+	result->calculate();
+	EXPECT_EQ(result->getValue(), 14);
+
+	delete result;
+}
+
+TEST(ExpressionTreeParser, Order_of_Operations_2) {
+	const std::string expression = "2*3+4";
+
+	Node* result = parse(expression);
+
+	result->calculate();
+	EXPECT_EQ(result->getValue(), 10);
+
+	delete result;
+}
+
